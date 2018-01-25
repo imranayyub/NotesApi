@@ -8,7 +8,7 @@
 module.exports = {
   index: function (req, res) {
     var email = req.param('email');
-    Users.findOne({email: email}, function (err, user) {
+    User.findOne({email: email}, function (err, user) {
       if (!user) {
         return res.json(401, {err: 'invalid email or password'});
       }

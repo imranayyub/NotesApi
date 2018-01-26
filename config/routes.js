@@ -36,8 +36,15 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'POST /testLogin': 'UserController.delete',//test login and get JWT (testing purpose)
-  //'POST /delete': 'UserController.delete'
+  'POST /testLogin': 'UserController.signupOrLogin',//test login and get JWT (testing purpose)
+  'POST /add': 'NotesController.add',
+  'POST /notes': 'NotesController.getNotes',
+  'POST /editnote': 'NotesController.editNote',
+  'POST /geteditnote': 'NotesController.getEditNote',
+  'POST /deletenote': 'NotesController.deleteNote',
+  'POST /sharenote': 'SharedNotesController.shareNote',
+  'POST /sharednotes': 'SharedNotesController.sharedNotes'
+
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

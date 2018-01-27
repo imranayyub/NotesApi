@@ -38,7 +38,7 @@ module.exports = {
         return res.json(err.status, {err: err});
       }
       else {
-        res.json(200, {notes: note});
+        res.json(note);
       }
     });
   },

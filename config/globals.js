@@ -60,8 +60,4 @@ module.exports.globals = {
   ****************************************************************************/
 
 	// models: true
-  jwt_secret : "taxiwaxi_secret_password2_MANTRA",
-
-
-  socket_url : "http://54.254.167.79:1337?__sails_io_sdk_version=0.13.5",
 };

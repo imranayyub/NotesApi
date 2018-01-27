@@ -36,14 +36,14 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'POST /testLogin': 'UserController.signupOrLogin',//test login and get JWT (testing purpose)
-  'POST /add': 'NotesController.add',
-  'POST /notes': 'NotesController.getNotes',
-  'POST /editnote': 'NotesController.editNote',
-  'POST /geteditnote': 'NotesController.getEditNote',
-  'POST /deletenote': 'NotesController.deleteNote',
-  'POST /sharenote': 'SharedNotesController.shareNote',
-  'POST /sharednotes': 'SharedNotesController.sharedNotes'
+  'POST /login': 'UserController.signupOrLogin',//test login and get JWT (testing purpose)
+  'POST /note/add': 'NotesController.add',
+  'POST /note': 'NotesController.getNotes',
+  'POST /note/edit': 'NotesController.editNote',
+  'POST /note/getedit': 'NotesController.getEditNote',
+  'POST /note/delete': 'NotesController.deleteNote',
+  'POST /note/share': 'SharedNotesController.shareNote',
+  'POST /note/shared': 'SharedNotesController.sharedNotes'
 
   /***************************************************************************
    *                                                                          *

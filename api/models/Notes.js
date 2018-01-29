@@ -48,7 +48,7 @@ module.exports = {
         return res.json(err.status, {err: err});
       }
       else {
-        res.json(200, {notes: note});
+        res.json(200,note);
       }
     });
   },
@@ -60,12 +60,12 @@ module.exports = {
         return res.json(err.status, {err: err});
       }
       else if (note) {
-        Notes.update({id: req.body.id}, {note: editnote}, function (err, result) {
+        Notes.update({id: req.body.id}, {note: editnote,title :req.body.title,tag:req.body.tag,color:req.body.color}, function (err, result) {
           if (err) {
             res.json(err);
           }
           else {
-            res.json(result);
+            res.json(note);
           }
         });
       }
@@ -87,14 +87,14 @@ module.exports = {
             res.json(err);
           }
           else {
-            res.json('note deleted');
+            res.json({delete :'note deleted'});
           }
 
         });
       }
 
       else {
-        res.json(200, 'note not found');
+        res.json(200,{not_found : 'note not found'});
       }
     });
   },

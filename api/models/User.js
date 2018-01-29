@@ -8,8 +8,7 @@ module.exports = {
     },
     token: {
       type: 'String',
-      required: true,
-      unique: 'true'
+      required: true
 
     }
   },

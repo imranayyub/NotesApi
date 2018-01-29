@@ -43,7 +43,11 @@ module.exports.routes = {
   'POST /note/getedit': 'NotesController.getEditNote',
   'POST /note/delete': 'NotesController.deleteNote',
   'POST /note/share': 'SharedNotesController.shareNote',
-  'POST /note/shared': 'SharedNotesController.sharedNotes'
+  'POST /note/shared': 'SharedNotesController.sharedNotes',
+  'POST /note/shared/edit':'SharedNotesController.editSharedNote',
+  'POST /note/shared/getedit' :'SharedNotesController.getEditSharedNote',
+  'POST /note/shared/delete' :'SharedNotesController.deleteSharedNote',
+  'POST /notification' : 'SharedNotesController.FirebaseNotification'
 
   /***************************************************************************
    *                                                                          *

@@ -15,7 +15,7 @@ module.exports = {
       type: 'email',
       required: true
     },
-    reciever_email: {
+    recipient: {
       type: 'email',
       required: true
     },
@@ -37,11 +37,11 @@ module.exports = {
     }
   },
   shareNote: function (req, res) {
-    User.findOne({email: req.body.reciever_email}, function (err, email) {
+    User.findOne({email: req.body.recipient}, function (err, user) {
       if (err) {
         return res.json(err.status, {err: err});
       }
-      else if (email) {
+      else if (user) {
         SharedNotes.create(req.body).exec(function (err, sharednotes) {
           if (err) {
             return res.json(err.status, {err: err});
@@ -52,11 +52,11 @@ module.exports = {
             res.json(200, {SharedNotes: sharednotes});
             //this.FirebaseNotification(req,res);
             var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
-              to: req.body.fcm_token,
+              to: user.fcm_token,
 
               notification: {
-                title: 'Title of your push notification',
-                body: 'Body of your push notification'
+                title:req.body.title ,
+                body: req.body.note
               },
 
               //data: {  //you can send only notification or only data(or include both)
@@ -82,7 +82,7 @@ module.exports = {
     });
   },
   SharedNotes: function (req, res) {
-    SharedNotes.find({reciever_email: req.body.reciever_email}, function (err, sharednote) {
+    SharedNotes.find({recipient: req.body.recipient}, function (err, sharednote) {
       if (err) {
         return res.json(err.status, {err: err});
       }
@@ -118,7 +118,7 @@ module.exports = {
   },
 
   getEditSharedNote: function (req, res) {
-    SharedNotes.findOne({$and :[{reciever_email:req.body.reciever_email},{note: req.body.note}]}, function (err, note) {
+    SharedNotes.findOne({$and :[{recipient:req.body.recipient},{note: req.body.note}]}, function (err, note) {
       if (err) {
         return res.json(err.status, {err: err});
       }
@@ -156,7 +156,7 @@ module.exports = {
     });
   },
   deleteSharedNote: function (req, res) {
-    SharedNotes.findOne({$and: [{reciever_email: req.body.reciever_email}, {note: req.body.note}]}, function (err, note) {
+    SharedNotes.findOne({$and: [{recipient: req.body.recipient}, {note: req.body.note}]}, function (err, note) {
       if (err) {
         return res.json(err.status, {err: err});
       }

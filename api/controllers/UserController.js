@@ -23,5 +23,7 @@ module.exports = {
 
     User.signupOrLogin(req, res);
   },
-  logOut: {}
+  UpdateFcmToken: function(req,res){
+    User.UpdateFcmToken;
+  }
 };

@@ -37,6 +37,7 @@ module.exports.routes = {
   },
 
   'POST /login': 'UserController.signupOrLogin',//test login and get JWT (testing purpose)
+  'POST /user/updatetoken' : 'UserController.UpdateFcmToken',
   'POST /note/add': 'NotesController.add',
   'POST /note': 'NotesController.getNotes',
   'POST /note/edit': 'NotesController.editNote',

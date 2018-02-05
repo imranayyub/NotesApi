@@ -26,6 +26,8 @@ module.exports = {
       else if (result) {
         ////sails.log("user already exit - type:", userObj.type);
         //var token = jwt.sign(userObj, sails.config.globals.jwt_secret, {expiresIn: "365d"});
+        //User.update({email: email},{fcm_token:req.body.fcm_token,token :jwToken.issue({id: result.id})});
+        //res.json({user:user});
         result.token = jwToken.issue({id: result.id});
         res.json(result);
       }

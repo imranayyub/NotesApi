@@ -32,6 +32,12 @@ module.exports = {
     tag: {
       type: 'String'
     },
+    tag1: {
+      type: 'String'
+    },
+    tag2: {
+      type: 'String'
+    },
     fcm_token: {
       type: 'String'
     }
@@ -55,7 +61,7 @@ module.exports = {
               to: user.fcm_token,
 
               notification: {
-                title:req.body.title ,
+                title: req.body.title,
                 body: req.body.note
               },
 
@@ -67,7 +73,7 @@ module.exports = {
 
             fcm.send(message, function (err, response) {
               if (err) {
-                console.log("Something has gone wrong!");
+                console.log(err);
               } else {
                 console.log("Successfully sent with response: ", response);
               }
@@ -77,7 +83,7 @@ module.exports = {
       }
 
       else {
-        res.json(200, 'email not found');
+        res.json(404, 'email not found');
       }
     });
   },
@@ -117,16 +123,6 @@ module.exports = {
 
   },
 
-  getEditSharedNote: function (req, res) {
-    SharedNotes.findOne({$and :[{recipient:req.body.recipient},{note: req.body.note}]}, function (err, note) {
-      if (err) {
-        return res.json(err.status, {err: err});
-      }
-      else {
-        res.json(200,note);
-      }
-    });
-  },
   editSharedNote: function (req, res) {
     editnote = req.body.note;
     SharedNotes.findOne({id: req.body.id}, function (err, note) {

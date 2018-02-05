@@ -17,6 +17,12 @@ module.exports = {
         },
         tag: {
             type: 'String'
+        },
+        tag1: {
+          type: 'String'
+        },
+        tag2: {
+          type: 'String'
         }
     },
   add: function (req, res) {
@@ -39,16 +45,6 @@ module.exports = {
       }
       else {
         res.json(note);
-      }
-    });
-  },
-  getEditNote: function (req, res) {
-    Notes.findOne({$and :[{emails:req.body.emails},{note: req.body.note}]}, function (err, note) {
-      if (err) {
-        return res.json(err.status, {err: err});
-      }
-      else {
-        res.json(200,note);
       }
     });
   },
